@@ -1,0 +1,31 @@
+{
+  "name": "codecrafter-live-blog",
+  "version": "1.0.0",
+  "description": "CodeCrafter Live - Tech Blog Website",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx live-server .",
+    "add-post": "node add-blog-post.js",
+    "build": "echo 'No build process needed for static site'",
+    "deploy": "echo 'Deploy to your hosting provider'"
+  },
+  "keywords": [
+    "blog",
+    "tech",
+    "programming",
+    "tutorials",
+    "static-site"
+  ],
+  "author": "CodeCrafter Live",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "serve": "^14.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/codecrafter-live-blog.git"
+  },
+  "homepage": "https://codecrafter.live"
+}

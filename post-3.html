@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python for Data Science: Getting Started with Pandas | CodeCrafter Live</title>
+    <meta name="description" content="Introduction to data manipulation and analysis using Python's powerful Pandas library. Learn essential data science techniques with practical examples.">
+    <meta name="keywords" content="Python, Pandas, Data Science, Data Analysis, Machine Learning, Programming, Tutorial">
+    <meta name="author" content="CodeCrafter Live">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Python for Data Science: Getting Started with Pandas">
+    <meta property="og:description" content="Introduction to data manipulation and analysis using Python's powerful Pandas library. Learn essential data science techniques with practical examples.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://codecrafter.live/post-3.html">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&h=630&fit=crop">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Python for Data Science: Getting Started with Pandas">
+    <meta name="twitter:description" content="Introduction to data manipulation and analysis using Python's powerful Pandas library. Learn essential data science techniques with practical examples.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&h=630&fit=crop">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="post-styles.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="/" class="logo-link">
+                        <span class="logo-text">CodeCrafter</span>
+                        <span class="logo-live">.live</span>
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html#home" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#blog" class="nav-link">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#tutorials" class="nav-link">Tutorials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+                <div class="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Article Content -->
+    <main class="article-main">
+        <article class="article">
+            <div class="article-header">
+                <div class="article-meta">
+                    <span class="article-category">Python</span>
+                    <span class="article-date">December 10, 2024</span>
+                    <span class="article-read-time">10 min read</span>
+                </div>
+                <h1 class="article-title">Python for Data Science: Getting Started with Pandas</h1>
+                <p class="article-excerpt">
+                    Introduction to data manipulation and analysis using Python's powerful Pandas library. 
+                    Learn essential data science techniques with practical examples and real-world datasets.
+                </p>
+            </div>
+
+            <!-- Ad Banner (Top of Article) -->
+            <div class="ad-container ad-article-top">
+                <div class="ad-banner">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-XXXXXXXXXX"
+                         data-ad-slot="XXXXXXXXXX"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <p>
+                    Pandas is the cornerstone of data science in Python. This powerful library provides data structures 
+                    and functions needed to manipulate structured data efficiently. Whether you're analyzing sales data, 
+                    processing sensor readings, or working with machine learning datasets, Pandas is your go-to tool.
+                </p>
+
+                <h2>What is Pandas?</h2>
+                <p>
+                    Pandas is an open-source data analysis and manipulation library built on top of NumPy. It provides 
+                    two primary data structures: <strong>DataFrames</strong> (2D tables) and <strong>Series</strong> (1D arrays). 
+                    These structures make it easy to work with labeled data and perform complex operations.
+                </p>
+
+                <h2>Installation and Setup</h2>
+                <p>First, let's install Pandas and the required dependencies:</p>
+
+                <pre><code># Install Pandas
+pip install pandas numpy matplotlib seaborn
+
+# Or using conda
+conda install pandas numpy matplotlib seaborn
+
+# Import the library
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns</code></pre>
+
+                <h2>Creating DataFrames</h2>
+                <p>There are several ways to create DataFrames in Pandas:</p>
+
+                <h3>From Dictionary</h3>
+                <pre><code># Create DataFrame from dictionary
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie', 'Diana'],
+    'Age': [25, 30, 35, 28],
+    'City': ['New York', 'London', 'Tokyo', 'Paris'],
+    'Salary': [50000, 60000, 70000, 55000]
+}
+
+df = pd.DataFrame(data)
+print(df)</code></pre>
+
+                <h3>From CSV File</h3>
+                <pre><code># Read CSV file
+df = pd.read_csv('data.csv')
+
+# Read with specific parameters
+df = pd.read_csv('data.csv', 
+                index_col=0,           # Use first column as index
+                parse_dates=['date'],  # Parse date columns
+                na_values=['N/A'])     # Treat 'N/A' as NaN</code></pre>
+
+                <h3>From Excel File</h3>
+                <pre><code># Read Excel file
+df = pd.read_excel('data.xlsx', sheet_name='Sheet1')
+
+# Read multiple sheets
+all_sheets = pd.read_excel('data.xlsx', sheet_name=None)</code></pre>
+
+                <!-- Ad Banner (Middle of Article) -->
+                <div class="ad-container ad-article-middle">
+                    <div class="ad-banner">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-XXXXXXXXXX"
+                             data-ad-slot="XXXXXXXXXX"
+                             data-ad-format="rectangle"></ins>
+                    </div>
+                </div>
+
+                <h2>Basic DataFrame Operations</h2>
+                <p>Let's explore the fundamental operations you'll use daily:</p>
+
+                <h3>Viewing Data</h3>
+                <pre><code># Display basic information
+print(df.info())          # Data types and memory usage
+print(df.describe())      # Statistical summary
+print(df.head())          # First 5 rows
+print(df.tail())          # Last 5 rows
+print(df.shape)           # Dimensions (rows, columns)
+
+# Display specific columns
+print(df['Name'])         # Single column
+print(df[['Name', 'Age']]) # Multiple columns</code></pre>
+
+                <h3>Data Selection and Filtering</h3>
+                <pre><code># Select rows by index
+print(df.iloc[0])         # First row
+print(df.iloc[0:3])       # First 3 rows
+print(df.iloc[0, 1])      # First row, second column
+
+# Select rows by label
+print(df.loc[0])          # Row with index 0
+print(df.loc[0:2])        # Rows 0 to 2
+print(df.loc[0, 'Name'])  # Specific cell
+
+# Filter data
+young_employees = df[df['Age'] < 30]
+high_salary = df[df['Salary'] > 60000]
+specific_city = df[df['City'] == 'New York']</code></pre>
+
+                <h2>Data Cleaning</h2>
+                <p>Data cleaning is crucial for accurate analysis:</p>
+
+                <h3>Handling Missing Values</h3>
+                <pre><code># Check for missing values
+print(df.isnull().sum())
+
+# Drop rows with missing values
+df_clean = df.dropna()
+
+# Fill missing values
+df['Age'].fillna(df['Age'].mean(), inplace=True)  # Fill with mean
+df['City'].fillna('Unknown', inplace=True)        # Fill with string
+
+# Forward fill (use previous value)
+df.fillna(method='ffill', inplace=True)</code></pre>
+
+                <h3>Removing Duplicates</h3>
+                <pre><code># Check for duplicates
+print(df.duplicated().sum())
+
+# Remove duplicates
+df_unique = df.drop_duplicates()
+
+# Remove duplicates based on specific columns
+df_unique = df.drop_duplicates(subset=['Name', 'Email'])</code></pre>
+
+                <h2>Data Transformation</h2>
+                <p>Transform your data to make it analysis-ready:</p>
+
+                <h3>Adding New Columns</h3>
+                <pre><code># Create new column based on existing data
+df['Age_Group'] = df['Age'].apply(lambda x: 'Young' if x < 30 else 'Adult')
+
+# Create column with calculations
+df['Salary_Per_Year'] = df['Salary'] * 12
+
+# Create column with conditions
+df['High_Earner'] = df['Salary'] > df['Salary'].mean()</code></pre>
+
+                <h3>Grouping and Aggregation</h3>
+                <pre><code># Group by single column
+city_stats = df.groupby('City').agg({
+    'Age': 'mean',
+    'Salary': ['mean', 'count', 'std']
+})
+
+# Group by multiple columns
+age_city_stats = df.groupby(['Age_Group', 'City']).mean()
+
+# Custom aggregation
+def salary_range(series):
+    return series.max() - series.min()
+
+df.groupby('City')['Salary'].agg(salary_range)</code></pre>
+
+                <h2>Data Analysis Examples</h2>
+                <p>Let's work through a real-world example:</p>
+
+                <h3>Sales Data Analysis</h3>
+                <pre><code># Load sales data
+sales_df = pd.read_csv('sales_data.csv')
+
+# Basic exploration
+print("Dataset shape:", sales_df.shape)
+print("\nFirst few rows:")
+print(sales_df.head())
+
+print("\nData types:")
+print(sales_df.dtypes)
+
+print("\nMissing values:")
+print(sales_df.isnull().sum())
+
+# Convert date column
+sales_df['Date'] = pd.to_datetime(sales_df['Date'])
+
+# Add time-based columns
+sales_df['Year'] = sales_df['Date'].dt.year
+sales_df['Month'] = sales_df['Date'].dt.month
+sales_df['DayOfWeek'] = sales_df['Date'].dt.day_name()
+
+# Calculate total sales
+sales_df['Total_Sales'] = sales_df['Quantity'] * sales_df['Price']
+
+# Monthly sales summary
+monthly_sales = sales_df.groupby('Month')['Total_Sales'].sum()
+print("\nMonthly Sales:")
+print(monthly_sales)</code></pre>
+
+                <h2>Data Visualization</h2>
+                <p>Pandas integrates well with Matplotlib and Seaborn for visualization:</p>
+
+                <pre><code># Set up plotting
+plt.style.use('seaborn-v0_8')
+fig, axes = plt.subplots(2, 2, figsize=(15, 10))
+
+# Sales trend over time
+monthly_sales.plot(kind='line', ax=axes[0,0], title='Monthly Sales Trend')
+axes[0,0].set_ylabel('Total Sales')
+
+# Sales by product category
+category_sales = sales_df.groupby('Category')['Total_Sales'].sum()
+category_sales.plot(kind='bar', ax=axes[0,1], title='Sales by Category')
+axes[0,1].tick_params(axis='x', rotation=45)
+
+# Price distribution
+sales_df['Price'].hist(bins=20, ax=axes[1,0], title='Price Distribution')
+axes[1,0].set_xlabel('Price')
+
+# Sales by day of week
+dow_sales = sales_df.groupby('DayOfWeek')['Total_Sales'].sum()
+dow_sales.plot(kind='bar', ax=axes[1,1], title='Sales by Day of Week')
+axes[1,1].tick_params(axis='x', rotation=45)
+
+plt.tight_layout()
+plt.show()</code></pre>
+
+                <h2>Advanced Operations</h2>
+                <p>Some advanced techniques for complex data analysis:</p>
+
+                <h3>Pivot Tables</h3>
+                <pre><code># Create pivot table
+pivot_table = sales_df.pivot_table(
+    values='Total_Sales',
+    index='Category',
+    columns='Month',
+    aggfunc='sum',
+    fill_value=0
+)
+
+print(pivot_table)</code></pre>
+
+                <h3>Merging DataFrames</h3>
+                <pre><code># Merge two DataFrames
+customers_df = pd.read_csv('customers.csv')
+merged_df = pd.merge(sales_df, customers_df, on='Customer_ID', how='left')
+
+# Concatenate DataFrames
+df1 = pd.DataFrame({'A': [1, 2], 'B': [3, 4]})
+df2 = pd.DataFrame({'A': [5, 6], 'B': [7, 8]})
+combined_df = pd.concat([df1, df2], ignore_index=True)</code></pre>
+
+                <h3>Time Series Analysis</h3>
+                <pre><code># Set date as index
+sales_df.set_index('Date', inplace=True)
+
+# Resample to different frequencies
+daily_sales = sales_df['Total_Sales'].resample('D').sum()
+weekly_sales = sales_df['Total_Sales'].resample('W').sum()
+monthly_sales = sales_df['Total_Sales'].resample('M').sum()
+
+# Calculate rolling averages
+sales_df['7_day_avg'] = sales_df['Total_Sales'].rolling(window=7).mean()
+sales_df['30_day_avg'] = sales_df['Total_Sales'].rolling(window=30).mean()</code></pre>
+
+                <h2>Performance Tips</h2>
+                <p>Optimize your Pandas code for better performance:</p>
+
+                <ul>
+                    <li><strong>Use vectorized operations:</strong> Avoid loops when possible</li>
+                    <li><strong>Choose appropriate data types:</strong> Use category for repeated strings</li>
+                    <li><strong>Use query() for complex filtering:</strong> More readable and often faster</li>
+                    <li><strong>Consider chunking for large files:</strong> Process data in chunks</li>
+                    <li><strong>Use .loc and .iloc efficiently:</strong> Avoid chained indexing</li>
+                </ul>
+
+                <pre><code># Efficient filtering
+# Instead of: df[df['Age'] > 30][df['Salary'] > 50000]
+# Use: df.query('Age > 30 and Salary > 50000')
+
+# Efficient data types
+df['Category'] = df['Category'].astype('category')
+
+# Chunking for large files
+chunk_size = 10000
+for chunk in pd.read_csv('large_file.csv', chunksize=chunk_size):
+    process_chunk(chunk)</code></pre>
+
+                <h2>Common Pitfalls and Solutions</h2>
+                <ul>
+                    <li><strong>SettingWithCopyWarning:</strong> Use .copy() when creating new DataFrames</li>
+                    <li><strong>Memory issues:</strong> Use appropriate data types and chunking</li>
+                    <li><strong>Index confusion:</strong> Understand the difference between .loc and .iloc</li>
+                    <li><strong>Date parsing:</strong> Always specify date format for better performance</li>
+                </ul>
+
+                <h2>Conclusion</h2>
+                <p>
+                    Pandas is an incredibly powerful tool for data analysis and manipulation. This introduction 
+                    covers the essential concepts you need to get started, but there's much more to explore. 
+                    Practice with real datasets, experiment with different operations, and gradually build 
+                    your expertise.
+                </p>
+
+                <p>
+                    Remember that data science is an iterative process. Start with basic operations, clean 
+                    your data thoroughly, explore patterns through visualization, and always validate your 
+                    results. With practice, you'll become proficient in using Pandas for complex data analysis tasks.
+                </p>
+
+                <div class="article-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Pandas</span>
+                    <span class="tag">Data Science</span>
+                    <span class="tag">Data Analysis</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+            <!-- Ad Banner (Sidebar) -->
+            <div class="ad-container ad-sidebar">
+                <div class="ad-banner">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-XXXXXXXXXX"
+                         data-ad-slot="XXXXXXXXXX"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Related Articles</h3>
+                <div class="related-articles">
+                    <a href="post-1.html" class="related-article">
+                        <h4>Master Modern JavaScript: ES6+ Features Every Developer Should Know</h4>
+                        <p>Dive deep into the latest JavaScript features including async/await, destructuring, modules, and more.</p>
+                    </a>
+                    <a href="post-2.html" class="related-article">
+                        <h4>Building Responsive Websites: CSS Grid vs Flexbox</h4>
+                        <p>Learn when to use CSS Grid and when to use Flexbox for creating modern, responsive layouts.</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Newsletter</h3>
+                <p>Get the latest data science tutorials delivered to your inbox.</p>
+                <form class="sidebar-newsletter">
+                    <input type="email" placeholder="Your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">CodeCrafter Live</h3>
+                    <p class="footer-description">
+                        Your ultimate destination for programming tutorials, tech insights, and coding resources.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">JavaScript</a></li>
+                        <li><a href="#">Python</a></li>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Mobile Apps</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Code Examples</a></li>
+                        <li><a href="#">Tools</a></li>
+                        <li><a href="#">Cheat Sheets</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CodeCrafter Live. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    
+    <!-- Google AdSense Script -->
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>

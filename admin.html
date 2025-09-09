@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Admin - CodeCrafter Live</title>
+    <meta name="description" content="Manage your blog posts and content">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin-styles.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CodeMirror for code editing -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/htmlmixed/htmlmixed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/css/css.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="admin-header">
+        <div class="admin-nav">
+            <div class="admin-logo">
+                <a href="index.html" class="logo-link">
+                    <span class="logo-text">CodeCrafter</span>
+                    <span class="logo-live">.live</span>
+                </a>
+            </div>
+            <div class="admin-nav-links">
+                <a href="index.html" class="nav-link">← Back to Blog</a>
+                <button class="btn btn-primary" onclick="saveBlogPost()">💾 Save Post</button>
+                <button class="btn btn-secondary" onclick="previewPost()">👁️ Preview</button>
+                <button class="btn btn-success" onclick="publishPost()">🚀 Publish</button>
+                <button class="btn btn-danger" onclick="logout()">🚪 Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login Screen -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <h2>🔐 Admin Access</h2>
+                    <p>Enter your password to access the blog editor</p>
+                </div>
+                <form class="login-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="adminPassword">Password</label>
+                        <input type="password" id="adminPassword" placeholder="Enter admin password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary login-btn">🔓 Access Editor</button>
+                </form>
+                <div class="login-footer">
+                    <small>Default password: <code>admin123</code> (change this in admin-script.js)</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Admin Area -->
+    <main class="admin-main" id="adminMain" style="display: none;">
+        <div class="admin-container">
+            <!-- Sidebar -->
+            <aside class="admin-sidebar">
+                <div class="sidebar-section">
+                    <h3>📝 Blog Posts</h3>
+                    <div class="post-list" id="postList">
+                        <!-- Posts will be loaded here -->
+                    </div>
+                    <button class="btn btn-outline" onclick="createNewPost()">+ New Post</button>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>📊 Quick Stats</h3>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalPosts">0</span>
+                            <span class="stat-label">Total Posts</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="draftPosts">0</span>
+                            <span class="stat-label">Drafts</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="publishedPosts">0</span>
+                            <span class="stat-label">Published</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>🎨 Templates</h3>
+                    <div class="template-list">
+                        <button class="template-btn" onclick="loadTemplate('tutorial')">📚 Tutorial</button>
+                        <button class="template-btn" onclick="loadTemplate('news')">📰 News</button>
+                        <button class="template-btn" onclick="loadTemplate('review')">⭐ Review</button>
+                        <button class="template-btn" onclick="loadTemplate('opinion')">💭 Opinion</button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Editor -->
+            <div class="admin-editor">
+                <div class="editor-tabs">
+                    <button class="tab-btn active" onclick="switchTab('content')">📝 Content</button>
+                    <button class="tab-btn" onclick="switchTab('meta')">⚙️ Meta</button>
+                    <button class="tab-btn" onclick="switchTab('settings')">🎨 Settings</button>
+                </div>
+
+                <!-- Content Tab -->
+                <div class="tab-content active" id="contentTab">
+                    <div class="editor-section">
+                        <label for="postTitle">📝 Post Title</label>
+                        <input type="text" id="postTitle" placeholder="Enter your blog post title..." class="form-input">
+                    </div>
+
+                    <div class="editor-section">
+                        <label for="postExcerpt">📄 Description</label>
+                        <textarea id="postExcerpt" placeholder="Brief description of your post..." class="form-textarea" rows="3"></textarea>
+                    </div>
+
+                    <div class="editor-section">
+                        <label for="postContent">📖 Content</label>
+                        <div class="editor-toolbar">
+                            <button onclick="insertHeading()" class="toolbar-btn">H2</button>
+                            <button onclick="insertSubheading()" class="toolbar-btn">H3</button>
+                            <button onclick="insertCode()" class="toolbar-btn">Code</button>
+                            <button onclick="insertList()" class="toolbar-btn">List</button>
+                            <button onclick="insertImage()" class="toolbar-btn">Image</button>
+                            <button onclick="insertLink()" class="toolbar-btn">Link</button>
+                            <button onclick="insertQuote()" class="toolbar-btn">Quote</button>
+                        </div>
+                        <textarea id="postContent" placeholder="Write your blog post content here..." class="form-textarea editor-textarea" rows="20"></textarea>
+                    </div>
+                </div>
+
+                <!-- Meta Tab -->
+                <div class="tab-content" id="metaTab">
+                    <div class="editor-section">
+                        <label for="postCategory">📂 Category</label>
+                        <select id="postCategory" class="form-select">
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="Python">Python</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="AI & ML">AI & ML</option>
+                            <option value="Tech News">Tech News</option>
+                            <option value="Mobile Apps">Mobile Apps</option>
+                            <option value="Tutorials">Tutorials</option>
+                            <option value="Reviews">Reviews</option>
+                        </select>
+                    </div>
+
+                    <div class="editor-section">
+                        <label for="postKeywords">🔍 Keywords</label>
+                        <input type="text" id="postKeywords" placeholder="javascript, tutorial, programming" class="form-input">
+                    </div>
+
+                    <div class="editor-section">
+                        <label for="postImage">🖼️ Featured Image URL</label>
+                        <input type="url" id="postImage" placeholder="https://images.unsplash.com/photo-..." class="form-input">
+                        <div class="image-preview" id="imagePreview"></div>
+                    </div>
+
+                    <div class="editor-section">
+                        <label for="postTags">🏷️ Tags</label>
+                        <input type="text" id="postTags" placeholder="tutorial, javascript, beginner" class="form-input">
+                    </div>
+
+                    <div class="editor-section">
+                        <label for="postReadTime">⏱️ Reading Time</label>
+                        <input type="text" id="postReadTime" placeholder="5 min read" class="form-input">
+                    </div>
+                </div>
+
+                <!-- Settings Tab -->
+                <div class="tab-content" id="settingsTab">
+                    <div class="editor-section">
+                        <label for="postFilename">📁 Filename</label>
+                        <input type="text" id="postFilename" placeholder="my-awesome-post" class="form-input">
+                        <small>Will be saved as: post-[filename].html</small>
+                    </div>
+
+                    <div class="editor-section">
+                        <label for="postStatus">📊 Status</label>
+                        <select id="postStatus" class="form-select">
+                            <option value="draft">Draft</option>
+                            <option value="published">Published</option>
+                        </select>
+                    </div>
+
+                    <div class="editor-section">
+                        <label for="postPriority">⭐ Priority</label>
+                        <select id="postPriority" class="form-select">
+                            <option value="0.8">High (0.8)</option>
+                            <option value="0.6">Medium (0.6)</option>
+                            <option value="0.4">Low (0.4)</option>
+                        </select>
+                    </div>
+
+                    <div class="editor-section">
+                        <h4>🎯 SEO Settings</h4>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="updateHomepage" checked>
+                                Update Homepage
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="updateSitemap" checked>
+                                Update Sitemap
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="addToRSS" checked>
+                                Add to RSS Feed
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Preview Modal -->
+    <div class="modal" id="previewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>👁️ Post Preview</h3>
+                <button class="modal-close" onclick="closePreview()">&times;</button>
+            </div>
+            <div class="modal-body" id="previewContent">
+                <!-- Preview content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div class="toast" id="successToast">
+        <div class="toast-content">
+            <span class="toast-icon">✅</span>
+            <span class="toast-message">Post saved successfully!</span>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="admin-script.js"></script>
+</body>
+</html>

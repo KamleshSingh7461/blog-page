@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Modern JavaScript: ES6+ Features Every Developer Should Know | CodeCrafter Live</title>
+    <meta name="description" content="Dive deep into the latest JavaScript features including async/await, destructuring, modules, and more. Level up your coding skills with practical examples.">
+    <meta name="keywords" content="JavaScript, ES6, ES2015, async/await, destructuring, modules, programming, web development">
+    <meta name="author" content="CodeCrafter Live">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Master Modern JavaScript: ES6+ Features Every Developer Should Know">
+    <meta property="og:description" content="Dive deep into the latest JavaScript features including async/await, destructuring, modules, and more. Level up your coding skills with practical examples.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://codecrafter.live/post-1.html">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=630&fit=crop">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Master Modern JavaScript: ES6+ Features Every Developer Should Know">
+    <meta name="twitter:description" content="Dive deep into the latest JavaScript features including async/await, destructuring, modules, and more. Level up your coding skills with practical examples.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=630&fit=crop">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="post-styles.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="/" class="logo-link">
+                        <span class="logo-text">CodeCrafter</span>
+                        <span class="logo-live">.live</span>
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html#home" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#blog" class="nav-link">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#tutorials" class="nav-link">Tutorials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+                <div class="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Article Content -->
+    <main class="article-main">
+        <article class="article">
+            <div class="article-header">
+                <div class="article-meta">
+                    <span class="article-category">JavaScript</span>
+                    <span class="article-date">December 15, 2024</span>
+                    <span class="article-read-time">8 min read</span>
+                </div>
+                <h1 class="article-title">Master Modern JavaScript: ES6+ Features Every Developer Should Know</h1>
+                <p class="article-excerpt">
+                    Dive deep into the latest JavaScript features including async/await, destructuring, modules, and more. 
+                    Level up your coding skills with practical examples and real-world use cases.
+                </p>
+            </div>
+
+            <!-- Ad Banner (Top of Article) -->
+            <div class="ad-container ad-article-top">
+                <div class="ad-banner">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-XXXXXXXXXX"
+                         data-ad-slot="XXXXXXXXXX"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <p>
+                    JavaScript has evolved tremendously since ES6 (ES2015) was released. Modern JavaScript offers powerful features 
+                    that make code more readable, maintainable, and efficient. In this comprehensive guide, we'll explore the most 
+                    important ES6+ features that every developer should master.
+                </p>
+
+                <h2>1. Arrow Functions</h2>
+                <p>
+                    Arrow functions provide a more concise syntax for writing function expressions. They're particularly useful 
+                    for short functions and when you want to preserve the lexical <code>this</code> binding.
+                </p>
+
+                <pre><code>// Traditional function
+function multiply(a, b) {
+    return a * b;
+}
+
+// Arrow function
+const multiply = (a, b) => a * b;
+
+// With single parameter (parentheses optional)
+const square = x => x * x;
+
+// With multiple statements
+const processData = (data) => {
+    const processed = data.map(item => item * 2);
+    return processed.filter(item => item > 10);
+};</code></pre>
+
+                <h2>2. Destructuring Assignment</h2>
+                <p>
+                    Destructuring allows you to extract values from arrays or properties from objects into distinct variables. 
+                    This makes code cleaner and more readable.
+                </p>
+
+                <pre><code>// Array destructuring
+const colors = ['red', 'green', 'blue'];
+const [primary, secondary, tertiary] = colors;
+
+// Object destructuring
+const user = {
+    name: 'John Doe',
+    age: 30,
+    email: 'john@example.com'
+};
+
+const { name, age, email } = user;
+
+// Destructuring with default values
+const { name, age = 25, city = 'Unknown' } = user;
+
+// Nested destructuring
+const config = {
+    database: {
+        host: 'localhost',
+        port: 5432
+    }
+};
+
+const { database: { host, port } } = config;</code></pre>
+
+                <h2>3. Template Literals</h2>
+                <p>
+                    Template literals provide an easy way to create strings with embedded expressions and multi-line strings.
+                </p>
+
+                <pre><code>// Basic template literal
+const name = 'World';
+const greeting = `Hello, ${name}!`;
+
+// Multi-line strings
+const html = `
+    <div class="container">
+        <h1>${title}</h1>
+        <p>${description}</p>
+    </div>
+`;
+
+// Tagged template literals
+function highlight(strings, ...values) {
+    return strings.reduce((result, string, i) => {
+        return result + string + (values[i] ? `<mark>${values[i]}</mark>` : '');
+    }, '');
+}
+
+const highlighted = highlight`This is ${important} and ${urgent}`;</code></pre>
+
+                <!-- Ad Banner (Middle of Article) -->
+                <div class="ad-container ad-article-middle">
+                    <div class="ad-banner">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-XXXXXXXXXX"
+                             data-ad-slot="XXXXXXXXXX"
+                             data-ad-format="rectangle"></ins>
+                    </div>
+                </div>
+
+                <h2>4. Async/Await</h2>
+                <p>
+                    Async/await makes asynchronous code look and behave more like synchronous code. It's built on top of Promises 
+                    and provides a cleaner way to handle asynchronous operations.
+                </p>
+
+                <pre><code>// Using Promises
+function fetchUserData(userId) {
+    return fetch(`/api/users/${userId}`)
+        .then(response => response.json())
+        .then(user => {
+            return fetch(`/api/posts/${userId}`)
+                .then(response => response.json())
+                .then(posts => ({ user, posts }));
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+// Using async/await
+async function fetchUserData(userId) {
+    try {
+        const userResponse = await fetch(`/api/users/${userId}`);
+        const user = await userResponse.json();
+        
+        const postsResponse = await fetch(`/api/posts/${userId}`);
+        const posts = await postsResponse.json();
+        
+        return { user, posts };
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+// Parallel async operations
+async function fetchUserDataParallel(userId) {
+    try {
+        const [userResponse, postsResponse] = await Promise.all([
+            fetch(`/api/users/${userId}`),
+            fetch(`/api/posts/${userId}`)
+        ]);
+        
+        const user = await userResponse.json();
+        const posts = await postsResponse.json();
+        
+        return { user, posts };
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}</code></pre>
+
+                <h2>5. Modules (ES6 Modules)</h2>
+                <p>
+                    ES6 modules provide a standardized way to organize and share code between files. They support both named 
+                    and default exports/imports.
+                </p>
+
+                <pre><code>// math.js - Named exports
+export const add = (a, b) => a + b;
+export const subtract = (a, b) => a - b;
+export const multiply = (a, b) => a * b;
+
+// utils.js - Default export
+const formatDate = (date) => {
+    return new Intl.DateTimeFormat('en-US').format(date);
+};
+
+export default formatDate;
+
+// main.js - Importing modules
+import { add, subtract, multiply } from './math.js';
+import formatDate from './utils.js';
+import * as math from './math.js'; // Import all as namespace
+
+// Using the imported functions
+const result = add(5, 3);
+const formatted = formatDate(new Date());</code></pre>
+
+                <h2>6. Classes</h2>
+                <p>
+                    ES6 introduced a cleaner syntax for creating objects and dealing with inheritance using classes.
+                </p>
+
+                <pre><code>class Animal {
+    constructor(name, species) {
+        this.name = name;
+        this.species = species;
+    }
+    
+    speak() {
+        console.log(`${this.name} makes a sound`);
+    }
+    
+    getInfo() {
+        return `${this.name} is a ${this.species}`;
+    }
+}
+
+class Dog extends Animal {
+    constructor(name, breed) {
+        super(name, 'dog');
+        this.breed = breed;
+    }
+    
+    speak() {
+        console.log(`${this.name} barks`);
+    }
+    
+    getInfo() {
+        return `${super.getInfo()} of breed ${this.breed}`;
+    }
+}
+
+// Using the classes
+const myDog = new Dog('Buddy', 'Golden Retriever');
+myDog.speak(); // "Buddy barks"
+console.log(myDog.getInfo()); // "Buddy is a dog of breed Golden Retriever"</code></pre>
+
+                <h2>7. Spread and Rest Operators</h2>
+                <p>
+                    The spread operator (...) allows an iterable to be expanded in places where multiple arguments or elements 
+                    are expected. The rest operator collects multiple elements into an array.
+                </p>
+
+                <pre><code>// Spread operator with arrays
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const combined = [...arr1, ...arr2]; // [1, 2, 3, 4, 5, 6]
+
+// Spread operator with objects
+const obj1 = { a: 1, b: 2 };
+const obj2 = { c: 3, d: 4 };
+const merged = { ...obj1, ...obj2 }; // { a: 1, b: 2, c: 3, d: 4 }
+
+// Rest operator in function parameters
+function sum(...numbers) {
+    return numbers.reduce((total, num) => total + num, 0);
+}
+
+console.log(sum(1, 2, 3, 4, 5)); // 15
+
+// Rest operator in destructuring
+const [first, second, ...rest] = [1, 2, 3, 4, 5];
+console.log(rest); // [3, 4, 5]</code></pre>
+
+                <h2>8. Map and Set</h2>
+                <p>
+                    Map and Set are new data structures introduced in ES6 that provide better alternatives to objects and arrays 
+                    in certain scenarios.
+                </p>
+
+                <pre><code>// Map - key-value pairs with any type of key
+const userMap = new Map();
+userMap.set('name', 'John');
+userMap.set(1, 'One');
+userMap.set(true, 'Boolean');
+
+console.log(userMap.get('name')); // 'John'
+console.log(userMap.size); // 3
+
+// Set - collection of unique values
+const uniqueNumbers = new Set([1, 2, 3, 3, 4, 4, 5]);
+console.log(uniqueNumbers); // Set {1, 2, 3, 4, 5}
+console.log(uniqueNumbers.size); // 5
+
+// Set methods
+uniqueNumbers.add(6);
+uniqueNumbers.delete(1);
+console.log(uniqueNumbers.has(2)); // true</code></pre>
+
+                <h2>9. Promises</h2>
+                <p>
+                    Promises provide a cleaner way to handle asynchronous operations compared to callbacks. They represent 
+                    a value that may be available now, in the future, or never.
+                </p>
+
+                <pre><code>// Creating a Promise
+const fetchData = (url) => {
+    return new Promise((resolve, reject) => {
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => resolve(data))
+            .catch(error => reject(error));
+    });
+};
+
+// Using Promises
+fetchData('/api/data')
+    .then(data => {
+        console.log('Data received:', data);
+        return processData(data);
+    })
+    .then(processedData => {
+        console.log('Processed data:', processedData);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+// Promise.all for parallel execution
+Promise.all([
+    fetchData('/api/users'),
+    fetchData('/api/posts'),
+    fetchData('/api/comments')
+])
+.then(([users, posts, comments]) => {
+    console.log('All data loaded:', { users, posts, comments });
+})
+.catch(error => {
+    console.error('One or more requests failed:', error);
+});</code></pre>
+
+                <h2>10. Optional Chaining and Nullish Coalescing</h2>
+                <p>
+                    These ES2020 features provide safer ways to access nested object properties and handle null/undefined values.
+                </p>
+
+                <pre><code>// Optional chaining (?.)
+const user = {
+    profile: {
+        address: {
+            street: '123 Main St'
+        }
+    }
+};
+
+// Safe property access
+const street = user?.profile?.address?.street; // '123 Main St'
+const city = user?.profile?.address?.city; // undefined (no error)
+
+// Optional chaining with function calls
+const result = user?.getData?.(); // Only calls if getData exists
+
+// Nullish coalescing (??)
+const name = user.name ?? 'Anonymous'; // Only uses default if null or undefined
+const age = user.age ?? 0; // 0 is falsy but not nullish, so it won't be replaced
+
+// Combined usage
+const displayName = user?.profile?.displayName ?? 'Guest';</code></pre>
+
+                <h2>Conclusion</h2>
+                <p>
+                    Mastering these modern JavaScript features will significantly improve your code quality and development efficiency. 
+                    Each feature serves a specific purpose and understanding when to use them is key to writing maintainable, 
+                    readable code.
+                </p>
+
+                <p>
+                    Start incorporating these features gradually into your projects. Practice with small examples and gradually 
+                    work your way up to more complex implementations. The JavaScript ecosystem continues to evolve, so staying 
+                    up-to-date with these features is essential for any modern developer.
+                </p>
+
+                <div class="article-tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">ES6</span>
+                    <span class="tag">Web Development</span>
+                    <span class="tag">Programming</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+            <!-- Ad Banner (Sidebar) -->
+            <div class="ad-container ad-sidebar">
+                <div class="ad-banner">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-XXXXXXXXXX"
+                         data-ad-slot="XXXXXXXXXX"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Related Articles</h3>
+                <div class="related-articles">
+                    <a href="post-2.html" class="related-article">
+                        <h4>Building Responsive Websites: CSS Grid vs Flexbox</h4>
+                        <p>Learn when to use CSS Grid and when to use Flexbox for creating modern, responsive layouts.</p>
+                    </a>
+                    <a href="post-3.html" class="related-article">
+                        <h4>Python for Data Science: Getting Started with Pandas</h4>
+                        <p>Introduction to data manipulation and analysis using Python's powerful Pandas library.</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Newsletter</h3>
+                <p>Get the latest programming tutorials delivered to your inbox.</p>
+                <form class="sidebar-newsletter">
+                    <input type="email" placeholder="Your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">CodeCrafter Live</h3>
+                    <p class="footer-description">
+                        Your ultimate destination for programming tutorials, tech insights, and coding resources.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">JavaScript</a></li>
+                        <li><a href="#">Python</a></li>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Mobile Apps</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Code Examples</a></li>
+                        <li><a href="#">Tools</a></li>
+                        <li><a href="#">Cheat Sheets</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CodeCrafter Live. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    
+    <!-- Google AdSense Script -->
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>

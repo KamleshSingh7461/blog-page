@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Responsive Websites: CSS Grid vs Flexbox | CodeCrafter Live</title>
+    <meta name="description" content="Learn when to use CSS Grid and when to use Flexbox for creating modern, responsive layouts. Master both layout systems with practical examples.">
+    <meta name="keywords" content="CSS Grid, Flexbox, responsive design, web development, layout, CSS, frontend">
+    <meta name="author" content="CodeCrafter Live">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Building Responsive Websites: CSS Grid vs Flexbox">
+    <meta property="og:description" content="Learn when to use CSS Grid and when to use Flexbox for creating modern, responsive layouts. Master both layout systems with practical examples.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://codecrafter.live/post-2.html">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=630&fit=crop">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Building Responsive Websites: CSS Grid vs Flexbox">
+    <meta name="twitter:description" content="Learn when to use CSS Grid and when to use Flexbox for creating modern, responsive layouts. Master both layout systems with practical examples.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=630&fit=crop">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="post-styles.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="/" class="logo-link">
+                        <span class="logo-text">CodeCrafter</span>
+                        <span class="logo-live">.live</span>
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html#home" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#blog" class="nav-link">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#tutorials" class="nav-link">Tutorials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+                <div class="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Article Content -->
+    <main class="article-main">
+        <article class="article">
+            <div class="article-header">
+                <div class="article-meta">
+                    <span class="article-category">Web Development</span>
+                    <span class="article-date">December 12, 2024</span>
+                    <span class="article-read-time">6 min read</span>
+                </div>
+                <h1 class="article-title">Building Responsive Websites: CSS Grid vs Flexbox</h1>
+                <p class="article-excerpt">
+                    Learn when to use CSS Grid and when to use Flexbox for creating modern, responsive layouts. 
+                    Master both layout systems with practical examples and real-world use cases.
+                </p>
+            </div>
+
+            <!-- Ad Banner (Top of Article) -->
+            <div class="ad-container ad-article-top">
+                <div class="ad-banner">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-XXXXXXXXXX"
+                         data-ad-slot="XXXXXXXXXX"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <p>
+                    CSS Grid and Flexbox are two powerful layout systems that have revolutionized web design. 
+                    While both can create responsive layouts, they excel in different scenarios. Understanding 
+                    when to use each is crucial for building modern, maintainable websites.
+                </p>
+
+                <h2>CSS Grid: The Two-Dimensional Layout System</h2>
+                <p>
+                    CSS Grid is designed for two-dimensional layouts, allowing you to control both rows and columns simultaneously. 
+                    It's perfect for complex layouts where you need precise control over both axes.
+                </p>
+
+                <h3>When to Use CSS Grid:</h3>
+                <ul>
+                    <li>Complex page layouts with multiple sections</li>
+                    <li>Card-based designs with varying content heights</li>
+                    <li>Dashboard layouts with multiple widgets</li>
+                    <li>Image galleries and masonry layouts</li>
+                    <li>Forms with complex field arrangements</li>
+                </ul>
+
+                <pre><code>/* CSS Grid Example: Card Layout */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+/* Responsive Grid */
+@media (max-width: 768px) {
+    .card-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}</code></pre>
+
+                <h2>Flexbox: The One-Dimensional Layout System</h2>
+                <p>
+                    Flexbox is designed for one-dimensional layouts, either in a row or column. It's excellent 
+                    for distributing space and aligning items within a container.
+                </p>
+
+                <h3>When to Use Flexbox:</h3>
+                <ul>
+                    <li>Navigation bars and menus</li>
+                    <li>Centering content vertically and horizontally</li>
+                    <li>Distributing space between items</li>
+                    <li>Creating flexible form layouts</li>
+                    <li>Building responsive sidebars</li>
+                </ul>
+
+                <pre><code>/* Flexbox Example: Navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #333;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #f0f0f0;
+}</code></pre>
+
+                <!-- Ad Banner (Middle of Article) -->
+                <div class="ad-container ad-article-middle">
+                    <div class="ad-banner">
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-XXXXXXXXXX"
+                             data-ad-slot="XXXXXXXXXX"
+                             data-ad-format="rectangle"></ins>
+                    </div>
+                </div>
+
+                <h2>Combining Grid and Flexbox</h2>
+                <p>
+                    The best approach is often to combine both systems. Use Grid for the overall page layout 
+                    and Flexbox for the components within those grid areas.
+                </p>
+
+                <pre><code>/* Combined Layout Example */
+.page-layout {
+    display: grid;
+    grid-template-areas: 
+        "header header"
+        "sidebar main"
+        "footer footer";
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+.header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #f8f9fa;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background: #e9ecef;
+}
+
+.main-content {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background: #343a40;
+    color: white;
+}</code></pre>
+
+                <h2>Responsive Design Patterns</h2>
+                <p>
+                    Both Grid and Flexbox excel at creating responsive designs. Here are some common patterns:
+                </p>
+
+                <h3>Mobile-First Grid Layout</h3>
+                <pre><code>/* Mobile First Approach */
+.responsive-grid {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+/* Mobile: Single column */
+.responsive-grid {
+    grid-template-columns: 1fr;
+}
+
+/* Tablet: Two columns */
+@media (min-width: 768px) {
+    .responsive-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+/* Desktop: Three columns */
+@media (min-width: 1024px) {
+    .responsive-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+    }
+}</code></pre>
+
+                <h3>Flexible Flexbox Navigation</h3>
+                <pre><code>/* Responsive Navigation */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    flex-wrap: wrap;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+/* Mobile: Stack vertically */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-menu {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+}</code></pre>
+
+                <h2>Performance Considerations</h2>
+                <p>
+                    Both Grid and Flexbox are well-optimized in modern browsers, but there are some considerations:
+                </p>
+
+                <ul>
+                    <li><strong>Grid:</strong> Better for complex layouts, can be more performant for large grids</li>
+                    <li><strong>Flexbox:</strong> Lighter weight for simple layouts, better for dynamic content</li>
+                    <li><strong>Browser Support:</strong> Both have excellent modern browser support</li>
+                    <li><strong>Fallbacks:</strong> Consider fallbacks for older browsers if needed</li>
+                </ul>
+
+                <h2>Best Practices</h2>
+                <ol>
+                    <li><strong>Start with Mobile:</strong> Design mobile-first, then enhance for larger screens</li>
+                    <li><strong>Use Semantic HTML:</strong> Structure your content properly before styling</li>
+                    <li><strong>Combine Both:</strong> Use Grid for layout, Flexbox for components</li>
+                    <li><strong>Test Thoroughly:</strong> Check across different devices and browsers</li>
+                    <li><strong>Keep It Simple:</strong> Don't overcomplicate your layouts</li>
+                </ol>
+
+                <h2>Common Mistakes to Avoid</h2>
+                <ul>
+                    <li>Using Grid for simple one-dimensional layouts</li>
+                    <li>Using Flexbox for complex two-dimensional layouts</li>
+                    <li>Not considering mobile responsiveness</li>
+                    <li>Overusing absolute positioning</li>
+                    <li>Ignoring browser support requirements</li>
+                </ul>
+
+                <h2>Conclusion</h2>
+                <p>
+                    CSS Grid and Flexbox are complementary tools that every modern web developer should master. 
+                    Grid excels at two-dimensional layouts and complex page structures, while Flexbox is perfect 
+                    for one-dimensional layouts and component alignment.
+                </p>
+
+                <p>
+                    The key is understanding when to use each tool and how to combine them effectively. Start 
+                    with simple examples, practice building common layouts, and gradually work your way up to 
+                    more complex designs. With time and practice, you'll develop an intuitive sense of which 
+                    tool to reach for in any given situation.
+                </p>
+
+                <div class="article-tags">
+                    <span class="tag">CSS Grid</span>
+                    <span class="tag">Flexbox</span>
+                    <span class="tag">Responsive Design</span>
+                    <span class="tag">Web Development</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+            <!-- Ad Banner (Sidebar) -->
+            <div class="ad-container ad-sidebar">
+                <div class="ad-banner">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-XXXXXXXXXX"
+                         data-ad-slot="XXXXXXXXXX"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Related Articles</h3>
+                <div class="related-articles">
+                    <a href="post-1.html" class="related-article">
+                        <h4>Master Modern JavaScript: ES6+ Features Every Developer Should Know</h4>
+                        <p>Dive deep into the latest JavaScript features including async/await, destructuring, modules, and more.</p>
+                    </a>
+                    <a href="post-3.html" class="related-article">
+                        <h4>Python for Data Science: Getting Started with Pandas</h4>
+                        <p>Introduction to data manipulation and analysis using Python's powerful Pandas library.</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Newsletter</h3>
+                <p>Get the latest web development tutorials delivered to your inbox.</p>
+                <form class="sidebar-newsletter">
+                    <input type="email" placeholder="Your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">CodeCrafter Live</h3>
+                    <p class="footer-description">
+                        Your ultimate destination for programming tutorials, tech insights, and coding resources.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">JavaScript</a></li>
+                        <li><a href="#">Python</a></li>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Mobile Apps</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Code Examples</a></li>
+                        <li><a href="#">Tools</a></li>
+                        <li><a href="#">Cheat Sheets</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CodeCrafter Live. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    
+    <!-- Google AdSense Script -->
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>
